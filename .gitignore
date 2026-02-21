@@ -1,0 +1,12 @@
+node_modules/
+.tmp/
+.cache/
+dist/
+build/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+.strapi/
+public/uploads/
