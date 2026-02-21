@@ -8,5 +8,21 @@ build/
 !.env.example
 *.log
 .DS_Store
+
+# Strapi internals
 .strapi/
-public/uploads/
+.strapi-updater.json
+types/generated/
+
+# Public uploads (keep directory, ignore files)
+public/uploads/*
+!public/uploads/.gitkeep
+
+# RSA key files (use Azure Key Vault in production)
+*.pem
+*.p8
+*.key
+
+# Docker
+.dockerignore
+

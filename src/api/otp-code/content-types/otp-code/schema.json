@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "otp_codes",
+  "info": {
+    "singularName": "otp-code",
+    "pluralName": "otp-codes",
+    "displayName": "OTP Code",
+    "description": "One-time passwords for email authentication (ADR-003)"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "content-manager": {
+      "visible": false
+    },
+    "content-type-builder": {
+      "visible": false
+    }
+  },
+  "attributes": {
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "code_hash": {
+      "type": "string",
+      "required": true,
+      "maxLength": 64,
+      "private": true
+    },
+    "expires_at": {
+      "type": "datetime",
+      "required": true
+    },
+    "attempt_count": {
+      "type": "integer",
+      "default": 0,
+      "min": 0,
+      "max": 3
+    },
+    "used": {
+      "type": "boolean",
+      "default": false
+    },
+    "used_at": {
+      "type": "datetime"
+    }
+  }
+}
