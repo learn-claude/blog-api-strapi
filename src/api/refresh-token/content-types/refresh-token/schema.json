@@ -1,0 +1,66 @@
+{
+  "kind": "collectionType",
+  "collectionName": "refresh_tokens",
+  "info": {
+    "singularName": "refresh-token",
+    "pluralName": "refresh-tokens",
+    "displayName": "Refresh Token",
+    "description": "Opaque refresh tokens for authenticated sessions (ADR-002)"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "content-manager": {
+      "visible": false
+    },
+    "content-type-builder": {
+      "visible": false
+    }
+  },
+  "attributes": {
+    "token_hash": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 64,
+      "private": true
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "device_type": {
+      "type": "enumeration",
+      "enum": ["web", "ios", "android"]
+    },
+    "device_info": {
+      "type": "text",
+      "private": true
+    },
+    "ip_address": {
+      "type": "string",
+      "maxLength": 45,
+      "private": true
+    },
+    "expires_at": {
+      "type": "datetime",
+      "required": true
+    },
+    "last_used_at": {
+      "type": "datetime"
+    },
+    "revoked": {
+      "type": "boolean",
+      "default": false
+    },
+    "revoked_at": {
+      "type": "datetime"
+    },
+    "revoked_reason": {
+      "type": "enumeration",
+      "enum": ["logout", "security", "admin_action", "rotated"]
+    }
+  }
+}
