@@ -86,7 +86,10 @@ const appleProvider = () => ({
   },
 
   decodeIdToken(idToken: string): any {
-    // Decode without verification here; Apple already validated via token exchange
+    // Decode without full signature verification: the token was received directly
+    // from Apple's token endpoint (not from the client), so the transport is trusted.
+    // TODO: For extra hardening, verify using Apple's public keys from
+    //   https://appleid.apple.com/auth/keys (JWKS) before decoding claims.
     const decoded = jwt.decode(idToken);
     if (!decoded || typeof decoded !== 'object') {
       throw new Error('Invalid Apple ID token');
