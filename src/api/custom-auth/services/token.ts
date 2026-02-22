@@ -36,7 +36,8 @@ const tokenService = ({ strapi }) => ({
    */
   generateAccessToken(user: User): string {
     const privateKey = process.env.JWT_PRIVATE_KEY;
-    const expiresIn = process.env.JWT_ACCESS_TOKEN_EXPIRES_IN || '15m';
+    // Cast needed: env string is compatible at runtime with jwt's branded StringValue type
+    const expiresIn = (process.env.JWT_ACCESS_TOKEN_EXPIRES_IN || '15m') as any;
 
     if (!privateKey) {
       // Fall back to HS256 for local development when no RSA key is configured

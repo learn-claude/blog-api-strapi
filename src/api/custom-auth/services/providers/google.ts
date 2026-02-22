@@ -26,7 +26,8 @@ const googleProvider = () => ({
       throw new Error('Invalid Google ID token');
     }
 
-    const claims = await response.json();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const claims: any = await response.json();
 
     // Verify the token was issued for our application
     const clientId = process.env.GOOGLE_CLIENT_ID;
