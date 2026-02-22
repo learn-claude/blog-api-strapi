@@ -84,7 +84,6 @@ export default {
       path: '/auth/logout-all',
       handler: 'api::custom-auth.auth.logoutAll',
       config: {
-        auth: true,
         policies: [],
         middlewares: [],
         description: 'Logout from all devices',
@@ -98,7 +97,6 @@ export default {
       path: '/auth/me',
       handler: 'api::custom-auth.auth.me',
       config: {
-        auth: true,
         policies: [],
         middlewares: [],
         description: 'Get current authenticated user profile',
